@@ -47,11 +47,30 @@
             border: 1px solid #ddd;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+        .alert {
+            margin-top: 20px;
+            text-align: center;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
     </style>
 </head>
 <body>
 <div class="container d-flex flex-column align-items-center">
-    <h1>X</h1>
+    <h1>Twitter</h1>
+
+    <!-- Contenedor para mensajes de éxito o error -->
+    <div id="messageBox" class="alert" role="alert" style="display: none;"></div>
 
     <form id="postForm" class="w-100">
         <div class="form-group">

@@ -1,3 +1,16 @@
+// Función para mostrar mensajes
+function showMessage(message, type) {
+    const messageBox = document.getElementById('messageBox');
+    messageBox.textContent = message;
+    messageBox.className = `alert alert-${type}`; // Puede ser 'alert-success' o 'alert-danger'
+    messageBox.style.display = 'block';
+
+    // Ocultar el mensaje después de unos segundos
+    setTimeout(() => {
+        messageBox.style.display = 'none';
+    }, 3000);
+}
+
 // Configuración de la API
 const API_BASE_URL = 'http://localhost:8080/api';
 
@@ -12,16 +25,12 @@ async function createPost(event) {
 
     // Validación
     if (!username || !streamTitle || !content) {
-        alert('Todos los campos son obligatorios');
+        showMessage('Todos los campos son obligatorios', 'danger');
         return;
     }
 
     // Crear objeto con la petición
-    const postRequest = {
-        username,
-        content,
-        streamTitle
-    };
+    const postRequest = { username, content, streamTitle };
 
     try {
         // Enviar petición POST
@@ -38,14 +47,13 @@ async function createPost(event) {
             // Si se crea correctamente, actualizar la lista de posts
             await getPosts();
             document.getElementById('postForm').reset();
-            alert('Post creado exitosamente');
+            showMessage('Post creado exitosamente', 'success');
         } else {
-            const errorData = await response.text();
-            alert(`Error al crear el post: ${errorData}`);
+            showMessage('Error al crear el post. Inténtalo de nuevo.', 'danger');
         }
     } catch (error) {
         console.error('Error:', error);
-        alert('Error al conectar con el servidor');
+        showMessage('Error al conectar con el servidor. Inténtalo de nuevo.', 'danger');
     }
 }
 
@@ -63,10 +71,11 @@ async function getPosts() {
             const posts = await response.json();
             displayPosts(posts);
         } else {
-            console.error('Error al obtener posts:', await response.text());
+            console.error('Error al obtener posts.');
         }
     } catch (error) {
         console.error('Error:', error);
+        showMessage('Error al obtener los posts. Verifica tu conexión.', 'danger');
     }
 }
 
@@ -77,10 +86,7 @@ function displayPosts(posts) {
 
     posts.forEach(post => {
         const li = document.createElement('li');
-        li.innerHTML = `
-            <strong>${post.username}</strong> en ${post.streamTitle}:<br>
-            ${post.content}
-        `;
+        li.innerHTML = `<strong>${post.username}</strong> en ${post.streamTitle}:<br>${post.content}`;
         postsList.appendChild(li);
     });
 }
