@@ -214,6 +214,7 @@ quarkus.oidc.credentials.secret=<app
 ### Acceptance test in AWS
 
 https://github.com/user-attachments/assets/e2f8dfc3-468d-4533-a9c7-e74a33b511c5
+**SI HAY PROBLEMAS CON LA VISUALIZACION DESCARGAR DESDE LA CARPETA VIDEO EN EL PROYECTO**
 
 ### Key Features
 1. **JWT-Based Authentication:**
