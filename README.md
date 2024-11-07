@@ -529,3 +529,5 @@ Github.
 ## Authors
 
 * **Jose Samuel Mahecha Alarcon** -  https://github.com/samuelmahecha.
+* **Juan David Garcia Pulido**  - https://github.com/JuanDavidGarciaPulido
+* **Hann Jang** - https://github.com/Hajaku12
